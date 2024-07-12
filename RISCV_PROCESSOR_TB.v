@@ -14,7 +14,7 @@ module RISCV_PROCESSOR_TB;
 	initial begin
 		clk = 1'b0;
 		rst = 1'b0;
-		instruction_in = 32'b00000000000100000000000100110011;
+		instruction_in = 32'b00000000000100000000000111100011;
 		ins_write = 1'b1;
 		#100
 		rst = 1'b1;

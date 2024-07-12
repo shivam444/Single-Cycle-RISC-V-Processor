@@ -38,6 +38,11 @@ module RISCV_PROCESSOR#(parameter INSTRUCTION_ADDR_SIZE = 5, DATA_LEN = 64)(inpu
 	DATA_MEMORY data_mem_dut(.clk(clk),.rst(rst),.mem_read(mem_read),.mem_write(mem_write),.rd_addr(data_out),.wr_addr(data_mem_wr_addr),.data_in(data_in),.data_out(data_mem_data_out));
 	
 	always@*begin
+		data_mem_wr_addr = data_out;
+		data_in = rd_data_2;
+	end
+	
+	always@*begin
 		case(instruction[6:0])
 			BEQ : offset_addr = {instruction[31], instruction[7], instruction[30:25], instruction[11:8]};
 			LOAD : offset_addr = instruction[31:20];
